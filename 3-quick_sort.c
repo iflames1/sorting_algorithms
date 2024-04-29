@@ -16,6 +16,14 @@ void swap_array(int *array, size_t index_1, size_t index_2)
 	array[index_2] = tmp;
 }
 
+/**
+ * lumuto_partition - partitions an array using the Lumuto algorithm
+ *
+ * @array: The array to partition
+ * @low: The index of the first element in the array
+ * @high: The index of the last element in the array
+ * Return: pi
+ */
 size_t lumuto_partition(int *array, int low, int high)
 {
 	int pivot = array[high];
@@ -47,16 +55,30 @@ size_t lumuto_partition(int *array, int low, int high)
 	return (start);
 }
 
+/**
+ * sort - sorts an array using the Lumuto algorithm
+ *
+ * @array: The array to sort
+ * @low: The index of the first element in the array
+ * @high: The index of the last element in the array
+ */
 void sort(int *array, int low, int high)
 {
-	if(low < high)
+	if (low < high)
 	{
 		size_t pi = lumuto_partition(array, low, high);
+
 		sort(array, low, pi - 1);
 		sort(array, pi + 1, high);
 	}
 }
 
+/**
+ * quick_sort - sorts an array using the quick sort algorithm
+ *
+ * @array: The array to sort
+ * @size: The size of the array
+ */
 void quick_sort(int *array, size_t size)
 {
 	sort(array, 0, size - 1);
